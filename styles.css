@@ -1,0 +1,611 @@
+:root {
+    --primary-color: #1a1a2e;
+    --secondary-color: #4a90e2;
+    --accent-color: #ff6b6b;
+    --background-color: #0f0f1a;
+    --text-color: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --success-color: #4cd137;
+    --error-color: #ff4757;
+    --neutral-color: #ffd32a;
+    --card-bg: #16213e;
+    --gradient-1: #4a90e2;
+    --gradient-2: #ff6b6b;
+    --title-gradient-1: #4a90e2;
+    --title-gradient-2: #ff6b6b;
+    --title-gradient-3: #4cd137;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color), var(--background-color));
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.game-container {
+    max-width: 1000px;
+    width: 95%;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+    gap: 2rem;
+}
+
+.score-box {
+    flex: 1;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.score-box h2 {
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.result-message {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin: 2rem 0;
+    min-height: 60px;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border: none;
+    background: var(--card-bg);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    min-width: 150px;
+}
+
+.choice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.choice i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.choice span {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.move-display {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0;
+    gap: 2rem;
+}
+
+.move {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    flex: 1;
+}
+
+.move h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.move i {
+    font-size: 3rem;
+    color: var(--text-color);
+}
+
+.reset-button {
+    display: block;
+    margin: 2rem auto;
+    padding: 1rem 2rem;
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.reset-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.developer-credit {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.winner {
+    color: var(--success-color) !important;
+}
+
+.loser {
+    color: var(--error-color) !important;
+}
+
+.tie {
+    color: var(--neutral-color) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .game-container {
+        padding: 1rem;
+    }
+
+    .game-header h1 {
+        font-size: 2rem;
+    }
+
+    .scoreboard {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .score-box {
+        padding: 1rem;
+    }
+
+    .score {
+        font-size: 2.5rem;
+    }
+
+    .choices {
+        gap: 1rem;
+    }
+
+    .choice {
+        padding: 1.5rem;
+        min-width: 120px;
+    }
+
+    .choice i {
+        font-size: 2.5rem;
+    }
+
+    .move-display {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .move {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .score-box {
+        padding: 0.8rem;
+    }
+
+    .score {
+        font-size: 2rem;
+    }
+
+    .choice {
+        padding: 1rem;
+        min-width: 100px;
+    }
+
+    .choice i {
+        font-size: 2rem;
+    }
+
+    .choice span {
+        font-size: 1rem;
+    }
+}
+
+/* Accessibility Focus Styles */
+.choice:focus, .reset-button:focus {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Winner/Loser Styles */
+.winner {
+    color: var(--success-color);
+    animation: bounce 0.5s ease, glow 2s infinite;
+}
+
+.loser {
+    color: var(--error-color);
+    animation: shake 0.5s ease;
+}
+
+.tie {
+    color: var(--neutral-color);
+    animation: pulse 0.5s ease;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease;
+}
+
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.subheading {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.feature-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.feature {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--gradient-1), var(--gradient-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.feature h3 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.feature p {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.social-share {
+    text-align: center;
+    margin: 3rem 0;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.share-btn {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 50%;
+    background: var(--card-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.share-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.share-btn.twitter:hover {
+    background: #1DA1F2;
+    color: white;
+}
+
+.share-btn.facebook:hover {
+    background: #4267B2;
+    color: white;
+}
+
+.developer-credit {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.developer-credit p {
+    font-size: 0.9rem;
+}
+
+/* Additional Responsive Styles */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .feature-highlights {
+        grid-template-columns: 1fr;
+    }
+
+    .feature {
+        padding: 1.5rem;
+    }
+}
+
+/* Additional Animations */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-section h1 {
+    animation: gradientShift 5s ease infinite;
+    background-size: 200% 200%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px var(--secondary-color); }
+    50% { box-shadow: 0 0 20px var(--secondary-color); }
+    100% { box-shadow: 0 0 5px var(--secondary-color); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.pulse {
+    animation: pulse 0.5s ease-in-out;
+}
+
+.bounce {
+    animation: bounce 0.5s ease-in-out;
+}
+
+/* Animated Title Styles */
+.animated-title {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    perspective: 1000px;
+}
+
+.word {
+    display: inline-flex;
+    gap: 0.1em;
+    margin: 0 0.2em;
+}
+
+.letter {
+    display: inline-block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    position: relative;
+    transform-style: preserve-3d;
+    opacity: 1 !important; /* Ensure letters stay visible */
+}
+
+/* Base animations for each word */
+.word:nth-child(1) .letter {
+    color: var(--title-gradient-1);
+    animation: floatAnimation 3s ease-in-out infinite;
+}
+
+.word:nth-child(2) .letter {
+    color: var(--title-gradient-2);
+    animation: floatAnimation 3s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.word:nth-child(3) .letter {
+    color: var(--title-gradient-3);
+    animation: floatAnimation 3s ease-in-out infinite;
+    animation-delay: 0.4s;
+}
+
+/* Special glow animations for specific letters */
+.word:nth-child(1) .letter:nth-child(odd) {
+    animation: combinedAnimation1 3s ease-in-out infinite;
+}
+
+.word:nth-child(2) .letter:nth-child(even) {
+    animation: combinedAnimation2 3s ease-in-out infinite;
+}
+
+.word:nth-child(3) .letter:nth-child(3n) {
+    animation: combinedAnimation3 3s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0) rotateX(0);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(10deg);
+    }
+}
+
+@keyframes combinedAnimation1 {
+    0%, 100% {
+        transform: translateY(0) rotateX(0);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(10deg);
+        text-shadow: 0 0 15px var(--title-gradient-1),
+                    0 0 25px var(--title-gradient-1);
+    }
+}
+
+@keyframes combinedAnimation2 {
+    0%, 100% {
+        transform: translateY(0) rotateX(0);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(10deg);
+        text-shadow: 0 0 15px var(--title-gradient-2),
+                    0 0 25px var(--title-gradient-2);
+    }
+}
+
+@keyframes combinedAnimation3 {
+    0%, 100% {
+        transform: translateY(0) rotateX(0);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        transform: translateY(-10px) rotateX(10deg);
+        text-shadow: 0 0 15px var(--title-gradient-3),
+                    0 0 25px var(--title-gradient-3);
+    }
+}
+
+/* Responsive title adjustments */
+@media (max-width: 768px) {
+    .letter {
+        font-size: 2rem;
+    }
+    .animated-title {
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .letter {
+        font-size: 1.5rem;
+    }
+    .animated-title {
+        gap: 0.3rem;
+    }
+    .word {
+        gap: 0.05em;
+    }
+} 

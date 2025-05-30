@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors | Kirat Mehta</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon/scissor.png">
+    <link rel="shortcut icon" type="image/png" href="favicon/scissor.png">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1 class="animated-title">
+                <span class="word" data-word-index="0">
+                    <span class="letter">R</span>
+                    <span class="letter">o</span>
+                    <span class="letter">c</span>
+                    <span class="letter">k</span>
+                </span>
+                <span class="word" data-word-index="1">
+                    <span class="letter">P</span>
+                    <span class="letter">a</span>
+                    <span class="letter">p</span>
+                    <span class="letter">e</span>
+                    <span class="letter">r</span>
+                </span>
+                <span class="word" data-word-index="2">
+                    <span class="letter">S</span>
+                    <span class="letter">c</span>
+                    <span class="letter">i</span>
+                    <span class="letter">s</span>
+                    <span class="letter">s</span>
+                    <span class="letter">o</span>
+                    <span class="letter">r</span>
+                    <span class="letter">s</span>
+                </span>
+            </h1>
+        </header>
+
+        <div class="scoreboard">
+            <div class="score-box player">
+                <h2>You</h2>
+                <p class="score" id="playerScore">0</p>
+            </div>
+            <div class="score-box computer">
+                <h2>Computer</h2>
+                <p class="score" id="computerScore">0</p>
+            </div>
+        </div>
+
+        <div class="result-message" id="resultMessage">
+            Choose your move!
+        </div>
+
+        <div class="choices" role="group" aria-label="Game choices">
+            <button class="choice" data-choice="rock" aria-label="Rock">
+                <i class="fas fa-hand-rock"></i>
+                <span>Rock</span>
+            </button>
+            <button class="choice" data-choice="paper" aria-label="Paper">
+                <i class="fas fa-hand-paper"></i>
+                <span>Paper</span>
+            </button>
+            <button class="choice" data-choice="scissors" aria-label="Scissors">
+                <i class="fas fa-hand-scissors"></i>
+                <span>Scissors</span>
+            </button>
+        </div>
+
+        <div class="game-status">
+            <div class="move-display">
+                <div class="move player-move">
+                    <h3>Your Move</h3>
+                    <i class="fas fa-question" id="playerChoice"></i>
+                </div>
+                <div class="move computer-move">
+                    <h3>Computer's Move</h3>
+                    <i class="fas fa-question" id="computerChoice"></i>
+                </div>
+            </div>
+        </div>
+
+        <button class="reset-button" id="resetButton" aria-label="Reset game">
+            Reset Game
+        </button>
+
+        <footer class="developer-credit">
+            <p>Built with ❤️ by Kirat Mehta</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
