@@ -146,7 +146,7 @@ function updateMoveDisplay(playerChoice, computerChoice) {
 function removeAnimationClasses() {
     playerChoiceIcon.classList.remove('bounce', 'winner', 'loser', 'tie');
     computerChoiceIcon.classList.remove('bounce', 'winner', 'loser', 'tie');
-    resultMessage.classList.remove('bounce');
+    resultMessage.classList.remove('bounce', 'player-wins', 'computer-wins', 'tie');
 }
 
 // Determine winner and update UI
@@ -155,6 +155,7 @@ function determineWinner(playerChoice, computerChoice) {
 
     if (playerChoice === computerChoice) {
         resultMessage.textContent = "It's a tie!";
+        resultMessage.classList.add('tie');
         playerChoiceIcon.classList.add('tie');
         computerChoiceIcon.classList.add('tie');
         return 'tie';
@@ -162,11 +163,13 @@ function determineWinner(playerChoice, computerChoice) {
 
     if (rules[playerChoice].beats === computerChoice) {
         resultMessage.textContent = 'You win!';
+        resultMessage.classList.add('player-wins');
         playerChoiceIcon.classList.add('winner');
         computerChoiceIcon.classList.add('loser');
         return 'player';
     } else {
         resultMessage.textContent = 'Computer wins!';
+        resultMessage.classList.add('computer-wins');
         playerChoiceIcon.classList.add('loser');
         computerChoiceIcon.classList.add('winner');
         return 'computer';
@@ -203,6 +206,7 @@ function resetGame() {
         playerScoreElement.textContent = '0';
         computerScoreElement.textContent = '0';
         resultMessage.textContent = 'Choose your move!';
+        resultMessage.className = 'result-message alert shadow-lg glass-effect';
         
         // Reset move displays
         playerChoiceIcon.className = 'fas fa-question';
